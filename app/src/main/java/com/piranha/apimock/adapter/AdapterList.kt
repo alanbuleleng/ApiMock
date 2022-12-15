@@ -1,14 +1,17 @@
 package com.piranha.apimock.adapter
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.piranha.apimock.Activity_Update
 import com.piranha.apimock.ListData
 import com.piranha.apimock.R
 import com.piranha.apimock.model.ResponseDelete
@@ -23,6 +26,7 @@ RecyclerView.Adapter<AdapterList.viewHolder>(){
         val title: TextView = itemView.findViewById(R.id.tv_title)
         val content: TextView = itemView.findViewById(R.id.tv_content)
         val delete: ImageView = itemView.findViewById(R.id.img_delete)
+        val update: Button = itemView.findViewById(R.id.btn_update)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
@@ -33,9 +37,18 @@ RecyclerView.Adapter<AdapterList.viewHolder>(){
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
         val data = ListData[position]
         Glide.with(holder.itemView)
-
         holder.title.text = data.title
         holder.content.text = data.content
+
+
+        holder.update.setOnClickListener {
+            val i = Intent(holder.itemView.context, Activity_Update::class.java)
+            i.putExtra("id",data.id)
+            i.putExtra("title",data.title)
+            i.putExtra("content",data.content)
+            i.putExtra("complete",data.complete)
+            holder.itemView.context.startActivity(i)
+        }
         holder.delete.setOnClickListener {
             ApiServis.endNetwork.DeleteTODO("${data.id}").enqueue(object :
                 Callback<ResponseDelete>{

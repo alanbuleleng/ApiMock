@@ -41,7 +41,7 @@ class AddTodoActivity : AppCompatActivity() {
 
     private fun addTODO() {
         binding.btnAddtodo.setOnClickListener {
-            var job = JsonObject()
+            val job = JsonObject()
             job.addProperty("title", binding.etTitle.text.toString())
             job.addProperty("complete", true)
             job.addProperty("content", binding.etContent.text.toString())

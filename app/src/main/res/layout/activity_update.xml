@@ -5,21 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AddTodoActivity">
+    tools:context=".Activity_Update">
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Masukkan Title"
-        android:id="@+id/et_title"/>
+        android:id="@+id/et_up_title"
+        android:hint="Masukkan Title"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Masukkan Content"
-        android:id="@+id/et_content"/>
+        android:id="@+id/et_up_content"
+        android:hint="Masukkan Content"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_addtodo"
-        android:text="Add Todo"/>
+        android:text="Update Todo"
+        android:id="@+id/btn_up_Todo"
+        />
+
 </LinearLayout>

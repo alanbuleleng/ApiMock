@@ -4,12 +4,14 @@ import com.google.gson.JsonObject
 import com.piranha.apimock.ResponseList
 import com.piranha.apimock.model.ResponseAdd
 import com.piranha.apimock.model.ResponseDelete
+import com.piranha.apimock.model.ResponseUpdate
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface ApiEndPoint {
@@ -32,5 +34,11 @@ interface ApiEndPoint {
     fun DeleteTODO(
         @Path("id") id: String
     ):Call<ResponseDelete>
+
+    @PUT("todo/{id}")
+    fun UpadateTODO(
+        @Path("id") id: String,
+        @Body jobUpdate: JsonObject
+    ):Call<ResponseUpdate>
 
 }

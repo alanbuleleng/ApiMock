@@ -33,12 +33,11 @@ class MainActivity : AppCompatActivity() {
         binding.sfContent.setOnRefreshListener {
             getData1()
         }
-
-
-
-
     }
-
+    override fun onStart(){
+        super.onStart()
+        getData1()
+    }
 
     private fun getData1() {
         binding.sfContent.isRefreshing = false
